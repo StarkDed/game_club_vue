@@ -3,9 +3,9 @@
     <h1>Welcome to GameClub</h1>
     <h2>There you will find:</h2>
     <div class="infoBlocks">
-      <InfoBlock></InfoBlock>
-      <InfoBlock></InfoBlock>
-      <InfoBlock></InfoBlock>
+      <InfoBlock :headingText="'Powerful computers'"></InfoBlock>
+      <InfoBlock :headingText="'Good price'"></InfoBlock>
+      <InfoBlock :headingText="'Good people'"></InfoBlock>
     </div>
     <SmileCompucter
       :blinkColor="blinkColor"
