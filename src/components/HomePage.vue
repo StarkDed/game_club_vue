@@ -7,7 +7,14 @@
       <InfoBlock></InfoBlock>
       <InfoBlock></InfoBlock>
     </div>
-    <SmileCompucter :blinkColor="blinkColor"></SmileCompucter>
+    <SmileCompucter
+      :blinkColor="blinkColor"
+      class="smileComputerLeft"
+    ></SmileCompucter>
+    <SmileCompucter
+      :blinkColor="blinkColor"
+      class="smileComputerRight"
+    ></SmileCompucter>
   </div>
 </template>
 
@@ -32,10 +39,12 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .homePage {
+  width: 100%;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  position: relative;
 }
 h1 {
   text-align: center;
@@ -46,11 +55,19 @@ h2 {
   text-align: center;
   color: white;
 }
+.smileComputerLeft {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.smileComputerRight {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
 .infoBlocks {
   display: flex;
   justify-content: center;
-}
-.infoBlock {
-  margin-right: 30px;
+  gap: 30px;
 }
 </style>
