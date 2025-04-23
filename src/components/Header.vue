@@ -1,19 +1,33 @@
 <template>
   <header>
-    <span>GameClub</span>
+    <router-link to="/">
+      <span>GameClub</span>
+    </router-link>
     <div class="options">
       <nav>
-        <router-link to="">Home</router-link>
+        <router-link to="/">Home</router-link>
         <router-link to="">rants</router-link>
         <router-link to="">about us</router-link>
       </nav>
-      <button class="signIn">Sign in</button>
-      <button class="signUp">Sign up</button>
+      <button class="signIn" @click="navigateToAuth('login')">Sign in</button>
+      <button class="signUp" @click="navigateToAuth('register')">
+        Sign up
+      </button>
     </div>
   </header>
 </template>
 
-<script>
+<script setup>
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const navigateToAuth = (mode) => {
+  router.push({
+    path: "/auth",
+    query: { mode: mode },
+  });
+};
 </script>
 
 <style scoped>
@@ -67,11 +81,14 @@ button {
   background: transparent;
   border: 2px solid yellow;
 }
+a {
+  text-decoration: none;
+}
 nav a {
   margin-right: 20px;
   font-size: 18px;
   color: white;
-  text-decoration: none;
+
   padding: 5px 7px;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
