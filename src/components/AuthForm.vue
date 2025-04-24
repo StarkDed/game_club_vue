@@ -10,6 +10,14 @@
         <label for="password">Password</label>
         <input type="password" id="password" />
       </div>
+      <div class="form-group" v-if="route.query.mode === 'register'">
+        <label for="passwordConfirm">Confirm password</label>
+        <input type="password" id="passwordConform" />
+      </div>
+      <div class="form-group" v-if="route.query.mode === 'register'">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" />
+      </div>
       <button class="authButton">{{ authText }}</button>
       <button class="toggleButton" @click="toggleAuthText">
         {{ toggleText }}
