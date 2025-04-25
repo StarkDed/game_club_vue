@@ -4,11 +4,11 @@
       <h2>{{ authText }}</h2>
       <div class="form-group">
         <label for="login">Login</label>
-        <input type="text" id="login" />
+        <input type="text" id="login" v-model="login" />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" />
+        <input type="password" id="password" v-model="password" />
       </div>
       <div class="form-group" v-if="route.query.mode === 'register'">
         <label for="passwordConfirm">Confirm password</label>
@@ -16,12 +16,13 @@
       </div>
       <div class="form-group" v-if="route.query.mode === 'register'">
         <label for="Email">Email</label>
-        <input type="email" id="Email" />
+        <input type="email" id="Email" v-model="email" />
       </div>
-      <button class="authButton">{{ authText }}</button>
+      <button class="authButton" @click="authHandler">{{ authText }}</button>
       <button class="toggleButton" @click="toggleAuthText">
         {{ toggleText }}
       </button>
+      <!-- <button class="authButton" @click="fetchData"></button> -->
     </div>
   </div>
 </template>
@@ -32,6 +33,10 @@ import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute();
 const router = useRouter();
+
+const login = ref("");
+const password = ref("");
+const email = ref("");
 
 const authText = ref("Log in");
 const toggleText = ref("Registration");
@@ -60,6 +65,38 @@ const toggleAuthText = () => {
     path: "/auth",
     query: { mode: newMode },
   });
+};
+
+const authHandler = () => {
+  if (route.query.mode === "login") {
+  } else if (route.query.mode === "register") {
+    registerHandler();
+  }
+};
+
+const registerHandler = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/add-user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: login.value,
+        password: password.value,
+        email: email.value,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Http error, status:${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log("Пока так", result);
+  } catch (error) {
+    console.log("Error on client {register}", error);
+  }
 };
 </script>
 
