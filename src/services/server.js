@@ -9,8 +9,6 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-app.use(express.json());
-
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -18,6 +16,8 @@ app.use(
     allowedHeaders: ["Content-Type"],
   })
 );
+
+app.use(express.json());
 
 const pool = mysql.createPool({
   host: "localhost",
@@ -44,6 +44,37 @@ app.post("/add-user", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: "error at server in add-user post" });
+  }
+});
+
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const [users] = await pool.query(
+      "SELECT * from accounts WHERE username=?",
+      [username]
+    );
+
+    if (users.length === 0) {
+      return res.status(401).json({ error: "User not found" });
+    }
+
+    const user = users[0];
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: "Password incorrect" });
+    }
+
+    res.json({
+      message: "Success auth",
+      user: JSON.stringify({
+        id: user.id,
+        username: user.username,
+      }),
+    });
+  } catch (error) {
+    res.status(500).json({ error: "Error at server login" });
   }
 });
 

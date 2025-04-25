@@ -2,6 +2,7 @@
   <div class="authForm">
     <div class="form">
       <h2>{{ authText }}</h2>
+      <p class="messageText">{{ messageText }}</p>
       <div class="form-group">
         <label for="login">Login</label>
         <input type="text" id="login" v-model="login" />
@@ -37,6 +38,7 @@ const router = useRouter();
 const login = ref("");
 const password = ref("");
 const email = ref("");
+const messageText = ref("");
 
 const authText = ref("Log in");
 const toggleText = ref("Registration");
@@ -69,6 +71,7 @@ const toggleAuthText = () => {
 
 const authHandler = () => {
   if (route.query.mode === "login") {
+    loginHandler();
   } else if (route.query.mode === "register") {
     registerHandler();
   }
@@ -98,6 +101,34 @@ const registerHandler = async () => {
     console.log("Error on client {register}", error);
   }
 };
+
+const loginHandler = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: login.value,
+        password: password.value,
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      messageText.value = result.error;
+      throw new Error(result.error);
+    }
+
+    console.log("Получилось?", result.message);
+    messageText.value = result.message;
+    console.log("Вот что пришло", result.user);
+  } catch (error) {
+    console.log("Error on login ", error);
+  }
+};
 </script>
 
 <style scoped>
@@ -112,6 +143,9 @@ const registerHandler = async () => {
 }
 h2 {
   text-align: center;
+}
+.messageText {
+  color: red;
 }
 .form {
   max-width: 300px;
