@@ -33,7 +33,7 @@ const navigateToAuth = (mode) => {
 <style scoped>
 header {
   background: #000;
-  height: 60px;
+  height: 80px;
   width: 100%;
   border-bottom: 1px solid yellow;
   display: flex;

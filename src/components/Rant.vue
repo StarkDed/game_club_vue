@@ -54,11 +54,11 @@
 
 <script setup>
 import { defineProps, computed, ref } from "vue";
-import SmilePC from "@/components/SmilePC.vue";
-import GameConsole from "@/components/GameConsole.vue";
-import Monitor from "@/components/Monitor.vue";
-import GamePC from "@/components/GamePC.vue";
-import Tablet from "@/components/Tablet.vue";
+import SmilePC from "@/assets/svgs/SmilePC.vue";
+import GameConsole from "@/assets/svgs/GameConsole.vue";
+import Monitor from "@/assets/svgs/Monitor.vue";
+import GamePC from "@/assets/svgs/GamePC.vue";
+import Tablet from "@/assets/svgs/Tablet.vue";
 
 const isHovered = ref(false);
 
