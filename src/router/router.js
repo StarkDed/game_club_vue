@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/components/HomePage.vue";
 import AuthForm from "@/components/AuthForm.vue";
+import Rants from "@/components/Rants.vue";
 
 const routes = [
   {
@@ -11,6 +12,10 @@ const routes = [
     path: "/auth",
     component: AuthForm,
     props: (route) => ({ mode: route.query.mode || "login" }),
+  },
+  {
+    path: "/rants",
+    component: Rants,
   },
 ];
 

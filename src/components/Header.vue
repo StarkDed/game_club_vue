@@ -6,7 +6,7 @@
     <div class="options">
       <nav>
         <router-link to="/">Home</router-link>
-        <router-link to="">rants</router-link>
+        <router-link to="/rants">rants</router-link>
         <router-link to="">about us</router-link>
       </nav>
       <button class="signIn" @click="navigateToAuth('login')">Sign in</button>
