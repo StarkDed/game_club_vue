@@ -40,6 +40,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .homePage {
   width: 100%;
+  min-height: 100vh;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
