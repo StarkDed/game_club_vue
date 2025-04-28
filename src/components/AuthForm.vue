@@ -137,9 +137,12 @@ const loginHandler = async () => {
   font-optical-sizing: auto;
   font-weight: 200;
   font-style: normal;
+
   color: white;
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
+  min-height: 100vh;
+  max-width: 300px;
+  margin: 0 auto;
 }
 h2 {
   text-align: center;

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/components/HomePage.vue";
 import AuthForm from "@/components/AuthForm.vue";
-import Rants from "@/components/Rants.vue";
+import Rates from "@/components/Rates.vue";
 
 const routes = [
   {
@@ -14,8 +14,8 @@ const routes = [
     props: (route) => ({ mode: route.query.mode || "login" }),
   },
   {
-    path: "/rants",
-    component: Rants,
+    path: "/rates",
+    component: Rates,
   },
 ];
 

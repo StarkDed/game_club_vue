@@ -1,53 +1,53 @@
 <template>
   <div
-    class="rant"
-    :style="{ borderColor: props.rant.type === 'VIP' ? 'yellow' : 'white' }"
+    class="rate"
+    :style="{ borderColor: props.rate.type === 'VIP' ? 'yellow' : 'white' }"
   >
     <div class="window">
       <component :is="currentIcon" />
     </div>
-    <h3 class="time">{{ props.rant.time }}</h3>
+    <h3 class="time">{{ props.rate.time }}</h3>
     <div class="hardware">
       <ul
         v-if="
-          props.rant.type !== 'consoleBasic' &&
-          props.rant.type !== 'consoleAdditional'
+          props.rate.type !== 'consoleBasic' &&
+          props.rate.type !== 'consoleAdditional'
         "
       >
         <li>
-          Graphic card: <span>{{ props.rant.hardware.graphicCard }}</span>
+          Graphic card: <span>{{ props.rate.hardware.graphicCard }}</span>
         </li>
         <li>
-          Processor: <span>{{ props.rant.hardware.processor }}</span>
+          Processor: <span>{{ props.rate.hardware.processor }}</span>
         </li>
         <li>
-          Ram: <span>{{ props.rant.hardware.ram }}</span>
+          Ram: <span>{{ props.rate.hardware.ram }}</span>
         </li>
         <li>
-          Monitor: <span>{{ props.rant.hardware.monitor }}</span>
+          Monitor: <span>{{ props.rate.hardware.monitor }}</span>
         </li>
         <li>
-          Keyboard: <span>{{ props.rant.hardware.keyboard }}</span>
+          Keyboard: <span>{{ props.rate.hardware.keyboard }}</span>
         </li>
         <li>
-          Mouse: <span>{{ props.rant.hardware.mouse }}</span>
+          Mouse: <span>{{ props.rate.hardware.mouse }}</span>
         </li>
         <li>
-          Headphones: <span>{{ props.rant.hardware.headphones }}</span>
+          Headphones: <span>{{ props.rate.hardware.headphones }}</span>
         </li>
       </ul>
       <ul v-else>
         <li>
-          Model: <span>{{ props.rant.hardware.model }}</span>
+          Model: <span>{{ props.rate.hardware.model }}</span>
         </li>
         <li>
           Amount Of Joysticks:
-          <span>{{ props.rant.hardware.amountOfJoysticks }}</span>
+          <span>{{ props.rate.hardware.amountOfJoysticks }}</span>
         </li>
       </ul>
     </div>
     <button @mouseover="isHovered = true" @mouseleave="isHovered = false">
-      {{ isHovered ? "Rent" : props.rant.price }}
+      {{ isHovered ? "Rent" : props.rate.price }}
     </button>
   </div>
 </template>
@@ -63,7 +63,7 @@ import Tablet from "@/assets/svgs/Tablet.vue";
 const isHovered = ref(false);
 
 const props = defineProps({
-  rant: {
+  rate: {
     type: Object,
   },
 });
@@ -76,11 +76,11 @@ const icons = {
   VIP: Monitor,
 };
 
-const currentIcon = computed(() => icons[props.rant.type]);
+const currentIcon = computed(() => icons[props.rate.type]);
 </script>
 
 <style scoped>
-.rant {
+.rate {
   width: 300px;
   padding: 20px;
   border: 2px solid white;
@@ -117,7 +117,7 @@ const currentIcon = computed(() => icons[props.rant.type]);
   font-weight: 400;
   color: white;
 }
-.rant button {
+.rate button {
   margin-top: 25px;
   display: inline;
   cursor: pointer;
