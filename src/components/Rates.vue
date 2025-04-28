@@ -3,24 +3,24 @@
     <h1>Rates</h1>
     <h2>Standart</h2>
     <div class="groupRants standart">
-      <Rant v-for="rant in rants[0]" :key="rant.id" :rant="rant" />
+      <Rate v-for="rate in rates[0]" :key="rate.id" :rate="rate" />
     </div>
     <h2>Console</h2>
     <div class="groupRants console">
-      <Rant v-for="rant in rants[1]" :key="rant.id" :rant="rant" />
+      <Rate v-for="rate in rates[1]" :key="rate.id" :rate="rate" />
     </div>
     <h2 style="color: yellow">VIP</h2>
     <div class="groupRants vip">
-      <Rant v-for="rant in rants[2]" :key="rant.id" :rant="rant" />
+      <Rate v-for="rate in rates[2]" :key="rate.id" :rate="rate" />
     </div>
   </div>
 </template>
 
 <script setup>
-import Rant from "@/components/Rant.vue";
+import Rate from "@/components/Rate.vue";
 import { reactive } from "vue";
 
-const rants = reactive([
+const rates = reactive([
   [
     {
       id: 1,
