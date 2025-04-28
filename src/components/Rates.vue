@@ -1,6 +1,6 @@
 <template>
   <div class="rantsWindow">
-    <h1>Rants</h1>
+    <h1>Rates</h1>
     <h2>Standart</h2>
     <div class="groupRants standart">
       <Rant v-for="rant in rants[0]" :key="rant.id" :rant="rant" />
