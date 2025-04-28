@@ -56,6 +56,7 @@ header span {
 button {
   margin-right: 5px;
   cursor: pointer;
+  outline: none;
   font-size: 15px;
   font-weight: 500;
   border-radius: 7px;
