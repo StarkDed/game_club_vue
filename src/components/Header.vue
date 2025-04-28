@@ -6,7 +6,7 @@
     <div class="options">
       <nav>
         <router-link to="/">Home</router-link>
-        <router-link to="">rants</router-link>
+        <router-link to="/rants">rants</router-link>
         <router-link to="">about us</router-link>
       </nav>
       <button class="signIn" @click="navigateToAuth('login')">Sign in</button>
@@ -33,7 +33,7 @@ const navigateToAuth = (mode) => {
 <style scoped>
 header {
   background: #000;
-  height: 60px;
+  height: 80px;
   width: 100%;
   border-bottom: 1px solid yellow;
   display: flex;

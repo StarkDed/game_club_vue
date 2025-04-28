@@ -20,7 +20,7 @@
 
 <script setup>
 import InfoBlock from "@/components/InfoBlock.vue";
-import SmileCompucter from "@/components/SmileCompucter.vue";
+import SmileCompucter from "@/assets/svgs/SmileCompucter.vue";
 import { ref, onMounted, onBeforeUnmount } from "vue";
 
 const blinkColor = ref("yellow");
@@ -40,6 +40,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .homePage {
   width: 100%;
+  min-height: 100vh;
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
   font-weight: 300;
